@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import de.syntax_institut.funappsvorlage.databinding.FragmentQuizBinding
+import java.util.Observer
 
 /**
  * Diese Klasse kümmert sich um die richtige Darstellung von UI Elementen.
@@ -62,6 +63,12 @@ class QuizFragment : Fragment() {
 
         // Beobachte die gameOver Variable des viewModel, falls das Spiel vorbei ist
         // TODO Schreibe hier deinen Code
-
+        viewModel.gameOver.observe(
+         viewLifecycleOwner)
+          {
+             if (it) {
+                 findNavController().navigate(QuizFragmentDirections.actionQuizFragmentToResultFragment())
+             }
+         }
     }
 }

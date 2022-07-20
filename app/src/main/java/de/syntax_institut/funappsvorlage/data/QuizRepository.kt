@@ -12,10 +12,10 @@ class QuizRepository {
     // TODO Schreibe hier deinen Code
     private val _question = MutableLiveData<List<Question>>()
     val question: LiveData<List<Question>>
-        get() = question
+        get() = _question
 
     init {
-        loadQuestions()
+        _question.value = loadQuestions()
     }
 
     /**
